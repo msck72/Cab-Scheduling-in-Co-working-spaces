@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Co-Working-Space Login Page</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<style>
+		.header {
+			border-radius: 20px;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			padding: 20px;
+			background-color: #333366	;
+			color: #fff;
+		}
+		body {
+			font-family: Arial, Helvetica, sans-serif;
+			/* background-color: #f2f2f2; */
+			background-image: url("https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/World_Trade_Center_Exterior_Entrance_arches_with_Sphere_at_Plaza_Fountain_sculpture_-_LCCN2021638448.jpg/220px-World_Trade_Center_Exterior_Entrance_arches_with_Sphere_at_Plaza_Fountain_sculpture_-_LCCN2021638448.jpg");
+  			background-repeat: no-repeat;
+			background-attachment: fixed;
+  			background-size: 100% 100%;
+		}
+		.container {
+			margin: 100px auto;
+			max-width: 500px;
+			padding: 20px;
+			background-color: #fff;
+			
+			border-radius: 10px;
+			box-shadow: 0px 0px 10px 2px rgba(0,0,0,0.1);
+		}
+		h2 {
+			font-family: Cambria;
+			text-align: center;
+			margin-bottom: 20px;
+		}
+		input[type=text], input[type=password] {
+			width: 100%;
+			padding: 12px 20px;
+			margin: 8px 0;
+			display: inline-block;
+			border: 1px solid #ccc;
+			border-radius: 4px;
+			box-sizing: border-box;
+		}
+		button {
+			background-color: #4CAF50;
+			color: #fff;
+			padding: 12px 20px;
+			border: none;
+			border-radius: 4px;
+			cursor: pointer;
+			width: 100%;
+		}
+		button:hover {
+			background-color: #45a049;
+		}
+	</style>
+</head>
+<body>
+	<header class="header">
+		<h1>Co-Working Space Login Form</h1>
+	</header>
+
+	<div class="container">
+		<%= locals.status %>
+		<h2>Existing User??</h2>
+		<form action="/Login_authorization" method="post">
+			<label for="user_name">Username</label><br>
+			<input type="text" id="username" name="user_name" placeholder="Enter your username" required>
+			<br><br>
+			<label for="password">Password</label><br>
+			<input type="password" id="password" name="password" placeholder="Enter your password" required><br><br>
+			<button type="submit">Login</button><br><br>
+			<h2>New Workspace??</h2>
+			<button  onclick="newUser()">Sign Up</button>
+		</form>
+	</div>
+</body>
+</html>
+
+<!-- 
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Co-Working-Space Login Page</title>
+</head>
+<body>
+	<div>
+		<p><%= locals.status %></p>
+		<div class="box">
+			<p>
+			<h1>Existing Workspace??</h1>
+			<form action="/Login_authorization" method="post">
+				UserName : <input type="text" name="user_name"><br> <br>
+				Password : <input type="password" name="passwd"><br> <br>
+				<input type="submit" value="Log In"><br> <br>
+			</form>
+			<h1>New Workspace??</h1>
+			<button onclick="newUser()">Sign Up</button>
+			</p>
+		</div>
+	</div>
+
+</body> -->
+
+<script>
+	function newUser(){
+		document.getElementsByClassName("container")[0].innerHTML = `<h2>New Workspace??</h2>
+			<form action="/createAccount" method="post">
+			Name : <input type="text" name="name" required><br><br>
+			Set your UserName : <br>
+			<input type="text" name="user_name" required><br><br>
+			Set your Password : <br>
+			<input type="password" name="password" required><br><br>
+			<button type="submit" >Create Account</button><br><br>
+		</form>`;
+	}
+</script>
+
+<!-- </html> -->
+
+
+
