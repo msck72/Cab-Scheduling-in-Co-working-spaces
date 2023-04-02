@@ -76,7 +76,15 @@
 		<h1>Welcome to My Website</h1>
 		<a href="#" class="logout">Logout</a>
 	</header>
-	<p><%= locals.status %></p>
+	
+	<p id="message">
+		<%= locals.status %>
+	</p>
+
+	<div class="flex-container">
+		<div id="demo"><button onclick="getLocation()">give my location</button></div>
+	</div>
+
 	<main>
 		<h2>Welcome <%= locals.user_name %></h2>
 		<p>Thank you for visiting our website.</p>
@@ -91,8 +99,38 @@
 </html>
 
 <script>
+
+	var message = document.getElementById('message').innerHTML;
+	document.getElementById('message').innerHTML = '';
+	message.trim();
+	console.log(message.trim());
+	console.log('hi');
+	var temp = String(message.trim());
+	if(temp === ""){
+		console.log(message.trim() + ' ' + String(message.trim()).localeCompare(""));
+		console.log('hi');
+	}
+	else{
+		alert(message);
+	}
+
+	function getLocation() {
+		document.getElementById("demo").innerHTML = "Calculating...";
+		if (navigator.geolocation) {
+			navigator.geolocation.getCurrentPosition(showPosition);
+		} else {
+			document.getElementById("demo").innerHTML = "Geolocation is not supported by this browser.";
+		}
+	}
+
+	function showPosition(position) {
+		document.getElementById("demo").innerHTML = "Latitude: " + position.coords.latitude +
+		"<br>Longitude: " + position.coords.longitude;
+	}
+
+
 	function addRentalForm(){
-		document.getElementsByClassName("flex-container")[0].innerHTML = `<div class="displayForm"><h2>Add Rental Frim??</h2>
+		document.getElementsByClassName("flex-container")[1].innerHTML = `<div class="displayForm"><h2>Add Rental Frim??</h2>
 			<form action="/createAccount_rentalFirm" method="post">
 			Name : <input type="text" name="name" required><br><br>
 			UserName : <br>
@@ -112,7 +150,7 @@
 
 
 	function addDriverForm(){
-		document.getElementsByClassName("flex-container")[0].innerHTML = `<div class="displayForm"><h2>Add Driver??</h2>
+		document.getElementsByClassName("flex-container")[1].innerHTML = `<div class="displayForm"><h2>Add Driver??</h2>
 			<form action="/createAccount_driver" method="post">
 			Name : <input type="text" name="name" required><br><br>
 			UserName : <br>

@@ -17,7 +17,7 @@
 		body {
 			font-family: Arial, Helvetica, sans-serif;
 			/* background-color: #f2f2f2; */
-			background-image: url("https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/World_Trade_Center_Exterior_Entrance_arches_with_Sphere_at_Plaza_Fountain_sculpture_-_LCCN2021638448.jpg/220px-World_Trade_Center_Exterior_Entrance_arches_with_Sphere_at_Plaza_Fountain_sculpture_-_LCCN2021638448.jpg");
+			background-image: url('image_co_workspace.jpg');
   			background-repeat: no-repeat;
 			background-attachment: fixed;
   			background-size: 100% 100%;
@@ -65,7 +65,9 @@
 	</header>
 
 	<div class="container">
-		<%= locals.status %>
+		<p id="message">
+			<%= locals.status %>
+		</p>
 		<h2>Existing User??</h2>
 		<form action="/Login_authorization" method="post">
 			<label for="user_name">Username</label><br>
@@ -110,6 +112,17 @@
 </body> -->
 
 <script>
+
+	var message = document.getElementById('message').innerHTML;
+	document.getElementById('message').innerHTML = '';
+	var temp = String(message).trim();
+	if(temp === ""){
+
+	}
+	else{
+		alert(message);
+	}
+
 	function newUser(){
 		document.getElementsByClassName("container")[0].innerHTML = `<h2>New Workspace??</h2>
 			<form action="/createAccount" method="post">

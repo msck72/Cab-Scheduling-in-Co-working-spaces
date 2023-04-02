@@ -36,9 +36,9 @@ export class co_working_space{
         client.close();
         if(filteredDocs.length == 0){
             console.log('Can be added');
-            await collection.insertOne({name: String(req.body.name) , password:  String(req.body.password) , user_name : String(req.body.user_name)});
+            await collection.insertOne({name: String(req.body.name) , password:  String(req.body.user_name) , user_name : String(req.body.password), email : String(req.body.email)});
             console.log('Added successfully');
-            res.render('co-working-space-files/HomePage', {status : `<script>alert('Added Successfully')</script>`});
+            res.render('co-working-space-files/HomePage', {status : "Added Successfully"});
             return;
         }
 
